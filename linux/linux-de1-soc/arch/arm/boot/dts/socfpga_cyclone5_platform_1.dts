@@ -20,5 +20,10 @@
 			compatible = "asps,de1soc-channelmux";
 			reg = <0xFF200060 0xF>;
 		};
+
+		datasourcemux0: datasourcemux@0xFF200070 {
+			compatible = "asps, de1soc-datasourcemux";
+			reg = <0xFF200070 0xF>;
+		};
 	};
 };
