@@ -1,0 +1,1 @@
+linux/image-de1-soc/rootfs.tar.gz filter=lfs diff=lfs merge=lfs -text
