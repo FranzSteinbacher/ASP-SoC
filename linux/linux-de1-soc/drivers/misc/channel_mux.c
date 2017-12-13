@@ -17,15 +17,16 @@
 #include <linux/fs.h>
 #include <linux/uaccess.h>
 
-#define DRIVER_NAME 		"channelmux"
+#define DRIVER_NAME		"channelmux"
 
 #define CHANNEL_MUX_RESET	((u8) 0x0)
 #define CHANNEL_MUX_DATA_LEN	((u8) 1)
 
 
-/* ----------------------------------------------------------------------------------------
-* Function declarations
-* ----------------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------
+ * Function declarations
+ * ----------------------------------------------------------------------------
+ */
 
 /* This function is called on read to the char file */
 static ssize_t file_read(struct file *filp, char __user *buff,
@@ -35,9 +36,10 @@ static ssize_t file_read(struct file *filp, char __user *buff,
 static ssize_t file_write(struct file *filp, const char __user *buff,
 				size_t count, loff_t *offp);
 
-/* ----------------------------------------------------------------------------------------
-* Global Varbles
-* ----------------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------
+ * Global Varbles
+ * ----------------------------------------------------------------------------
+ */
 
 /* This struct holds the file access functions */
 static const struct file_operations fops = {
@@ -52,9 +54,10 @@ struct channelmux_dat {
 	u8 buffer[CHANNEL_MUX_DATA_LEN];
 };
 
-/* ----------------------------------------------------------------------------------------
-* Function definitions
-* ----------------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------
+ * Function definitions
+ * ----------------------------------------------------------------------------
+ */
 
 
 static inline struct channelmux_dat *to_my_struct(struct file *file)
@@ -67,7 +70,7 @@ static inline struct channelmux_dat *to_my_struct(struct file *file)
 static ssize_t file_read(struct file *filp, char __user *buff,
 					size_t count, loff_t *offp)
 {
-	struct channelmux_dat* data = to_my_struct(filp);
+	struct channelmux_dat *data = to_my_struct(filp);
 	int transfer;
 	int max;
 	int writeBytes;
@@ -92,7 +95,7 @@ static ssize_t file_read(struct file *filp, char __user *buff,
 static ssize_t file_write(struct file *filp, const char __user *buff,
 					size_t count, loff_t *offp)
 {
-	struct channelmux_dat* data = to_my_struct(filp);
+	struct channelmux_dat *data = to_my_struct(filp);
 	int transfer;
 	int max;
 	int writeBytes;
